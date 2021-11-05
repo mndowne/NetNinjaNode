@@ -2,7 +2,7 @@
   "name": "netninjanodeproject",
   "version": "1.0.0",
   "description": "Net Ninja Node Project to relearn node js",
-  "main": "server.js",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mndowne/NetNinjaNode#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "lodash": "^4.17.21"
   }
 }
