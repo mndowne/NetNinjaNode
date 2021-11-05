@@ -1,0 +1,26 @@
+{
+  "name": "netninjanodeproject",
+  "version": "1.0.0",
+  "description": "Net Ninja Node Project to relearn node js",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mndowne/NetNinjaNode.git"
+  },
+  "author": "Martin Downes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mndowne/NetNinjaNode/issues"
+  },
+  "homepage": "https://github.com/mndowne/NetNinjaNode#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
