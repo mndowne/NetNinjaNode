@@ -1,8 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 // express app
 const app = express();
+
+// connect to mongodb
+const dbUser = 'mongodb+srv://mndowne:zzkcRHt84yEAxE3@cluster0.hy8gz.mongodb.net/Node-Tutorial?retryWrites=true&w=majority'
+mongoose.connect(dbUser).then((result) =>
+    app.listen(3000)).catch((err) => console.log(err)
+);
+
 
 // register view engine
 app.set('view engine','ejs')
@@ -11,12 +19,17 @@ app.set('view engine','ejs')
 //app.set('views','NotDefaultFolder');
 
 // listen for requests
-app.listen(3000);
+//app.listen(3000);
 
 //middleware & static files
 app.use(morgan('dev'));
 app.use(express.static('public'));
 
+//mongoose and mongo sandbox routes
+app.get('/add-blog');
+
+
+//routes
 app.get('/', (req, res) => {
 
     const blogs = [
@@ -57,4 +70,5 @@ app.use((req,res) => {
     //res.status(404).sendFile('./views/404.html', { root: __dirname });
     res.status(404).render('404', {title:'404'});
 });
+
 
