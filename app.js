@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Blog = require('./models/blog');
 
 // express app
 const app = express();
@@ -25,24 +26,53 @@ app.set('view engine','ejs')
 app.use(morgan('dev'));
 app.use(express.static('public'));
 
+/*
 //mongoose and mongo sandbox routes
-app.get('/add-blog');
+app.get('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title : 'new blog',
+        snippet: 'about my new blog',
+        body: 'more about the blog'
+
+    });
+
+    blog.save()
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
+
+
+app.get('/all-blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+
+
+app.get('/single-blog', (req, res) => {
+    Blog.findById('618853444b8118df05f8dde0')
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+*/
 
 
 //routes
 app.get('/', (req, res) => {
-
-    const blogs = [
-        {title: 'Yoshi find egg', snippet: 'Hiya friend'},
-        {title: 'Mario find star', snippet: 'Hiya friend'},
-        {title: 'Defeat Bowser', snippet: 'Hiya friend'},
-
-    ];
-
-    //res.send('<p>home page</p>');
-    //res.sendFile('./views/index.html', { root: __dirname });
-    res.render('index', {title:'Home', blogs });
-
+    res.redirect('/blogs');
 });
 
 app.get('/about', (req, res) => {
@@ -52,6 +82,17 @@ app.get('/about', (req, res) => {
 
 });
 
+
+// blog routes
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('index', {title: 'All Blogs', blogs: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
 
 app.get('/blogs/create', (req, res) => {
     res.render('create' ,{title:'Create New Blog'});
