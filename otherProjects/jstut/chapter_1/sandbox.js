@@ -1,23 +1,19 @@
 
-let radius = 10;
-const pi = 3.1415;
-
-let solution = radius + ' ' + pi
 
 
 
-const xhr = new XMLHttpRequest();
-xhr.open("POST", '/', true);
-xhr.setRequestHeader('content-Type', 'application/json');
+//const xhr = new XMLHttpRequest();
+//xhr.open("POST", '/', true);
+//xhr.setRequestHeader('content-Type', 'application/json');
 
 // functions
 
-function consoleInformation(message){
+//function consoleInformation(message){
 
 
 
 
-consoleInformation(solution);
+//consoleInformation(solution);
 /*
 // strings
 //console.log('hello, world');
@@ -67,12 +63,25 @@ console.log(result);
 
 //console.log(10 / 2);
 
+//
+//
+//
+//let radius = 10;
+//const pi = 3.1415;
+
+//let solution = radius + ' ' + pi
+
+
+let ninjas = ['shaun','ryu','chun-li'];
 
 
 
+console.log(ninjas);
 
+//array methods
 
-
-
+//let result = ninjas.join(',')
+let result = ninjas.concat(['ken','crystal']);
+console.log(result );
 
 
